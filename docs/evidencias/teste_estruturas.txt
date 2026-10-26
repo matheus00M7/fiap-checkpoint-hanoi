@@ -1,0 +1,2 @@
+PASSOU: pilhas, regras, historico, reset, vitoria de 3 a 8 discos e falhas de memoria.
+Alocacoes pendentes: 0.

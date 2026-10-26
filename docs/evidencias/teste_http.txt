@@ -1,0 +1,29 @@
+GET / => HTTP 200
+GET /style.css => HTTP 200
+GET /app.js => HTTP 200
+GET /api/ping => HTTP 200
+INIT 3 => HTTP 200 | OK|A=1,2,3|B=|C=|MOVES=0|MIN=7|WIN=0|MESSAGE=Jogo inicializado.
+MOVE B C => HTTP 422 | ERROR|INVALID_MOVE|MESSAGE=Movimento invalido.
+STATE => HTTP 200 | OK|A=1,2,3|B=|C=|MOVES=0|MIN=7|WIN=0|MESSAGE=Estado atual.
+MOVE A A => HTTP 422 | ERROR|INVALID_TOWER|MESSAGE=Use torres A, B ou C distintas.
+MOVE X C => HTTP 422 | ERROR|INVALID_TOWER|MESSAGE=Use torres A, B ou C distintas.
+STATE => HTTP 200 | OK|A=1,2,3|B=|C=|MOVES=0|MIN=7|WIN=0|MESSAGE=Estado atual.
+MOVE A C => HTTP 200 | OK|A=2,3|B=|C=1|MOVES=1|MIN=7|WIN=0|MESSAGE=Movimento realizado.
+MOVE A C => HTTP 422 | ERROR|INVALID_MOVE|MESSAGE=Movimento invalido.
+STATE => HTTP 200 | OK|A=2,3|B=|C=1|MOVES=1|MIN=7|WIN=0|MESSAGE=Estado atual.
+HISTORY => HTTP 200 | HISTORY|1,A,C
+RESET 3 => HTTP 200 | OK|A=1,2,3|B=|C=|MOVES=0|MIN=7|WIN=0|MESSAGE=Jogo inicializado.
+MOVE A C => HTTP 200 | OK|A=2,3|B=|C=1|MOVES=1|MIN=7|WIN=0|MESSAGE=Movimento realizado.
+MOVE A B => HTTP 200 | OK|A=3|B=2|C=1|MOVES=2|MIN=7|WIN=0|MESSAGE=Movimento realizado.
+MOVE C B => HTTP 200 | OK|A=3|B=1,2|C=|MOVES=3|MIN=7|WIN=0|MESSAGE=Movimento realizado.
+MOVE A C => HTTP 200 | OK|A=|B=1,2|C=3|MOVES=4|MIN=7|WIN=0|MESSAGE=Movimento realizado.
+MOVE B A => HTTP 200 | OK|A=1|B=2|C=3|MOVES=5|MIN=7|WIN=0|MESSAGE=Movimento realizado.
+MOVE B C => HTTP 200 | OK|A=1|B=|C=2,3|MOVES=6|MIN=7|WIN=0|MESSAGE=Movimento realizado.
+MOVE A C => HTTP 200 | OK|A=|B=|C=1,2,3|MOVES=7|MIN=7|WIN=1|MESSAGE=Movimento realizado.
+HISTORY => HTTP 200 | HISTORY|1,A,C;2,A,B;1,C,B;3,A,C;1,B,A;2,B,C;1,A,C
+RESET 8 => HTTP 200 | OK|A=1,2,3,4,5,6,7,8|B=|C=|MOVES=0|MIN=255|WIN=0|MESSAGE=Jogo inicializado.
+HISTORY => HTTP 200 | HISTORY|
+INIT 2 => HTTP 422 | ERROR|INVALID_DISK_COUNT|MESSAGE=Use de 3 a 8 discos.
+INIT 9 => HTTP 422 | ERROR|INVALID_DISK_COUNT|MESSAGE=Use de 3 a 8 discos.
+STATE => HTTP 200 | OK|A=1,2,3,4,5,6,7,8|B=|C=|MOVES=0|MIN=255|WIN=0|MESSAGE=Estado atual.
+PASSOU: frontend servido, comandos HTTP, regras, historico, reset e vitoria.
